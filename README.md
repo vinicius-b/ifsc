@@ -1,2 +1,2 @@
 # ifsc
-This is for IFSC projects
+This is for STE projects
