@@ -9,12 +9,14 @@
 #include <avr/io.h>
 
 
-UART::UART(unsigned baud, unsigned int data_size, unsigned int parity, unsigned int stop_bit) {
-	UBRRH = (baud>>8);
-	UBRRL = baud;
+UART::UART() {
+	unsigned int baud = 19200;
+	unsigned int ubrr = (F_CPU/(16 * baud))-1;
+	UBRRH = (unsigned char)(ubrr>>8);
+	UBRRL = (unsigned char)ubrr;
 
-	UCSRB = (1<<RXEN)|(1<<TXEN);
-
+	UCSRB |= (1<<4)|(1<<3);
+	UCSRC |= (1 <<2)|(1<<1);
 
 }
 
@@ -23,7 +25,8 @@ UART::~UART() {
 }
 
 void UART::put(char character){
-
+	while(!(UCSRA & (1 << 5)));
+	UDR = character;
 }
 
 char UART::get(){
