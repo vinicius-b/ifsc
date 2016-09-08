@@ -7,13 +7,16 @@
 
 #ifndef UART_H_
 #define UART_H_
+#include <avr/io.h>
 
 class UART {
 public:
-	UART(unsigned baud, unsigned int data_size, unsigned int parity, unsigned int stop_bit);
+	UART();
 	void put(char character);
 	char get();
 	~UART();
+	void print(char *s);
+	void println(char *s);
 };
 
 #endif /* UART_H_ */
