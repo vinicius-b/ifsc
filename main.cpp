@@ -4,8 +4,10 @@
  *  Created on: 31 de ago de 2016
  *      Author: aluno
  */
-#include "gpio.h"
 #include <util/delay.h>
+#include "gpio.h"
+#include "UART.h"
+#include "Debugger.h"
 
 int main(){
 	//false - saida
@@ -13,7 +15,7 @@ int main(){
 
 	gpio led(13,true);
 	UART Serial();
-	Debugger db(&Serial);
+	Debugger db(Serial);
 
 	while(1){
 		led.set(1);
@@ -26,5 +28,7 @@ int main(){
 
 	return 0;
 }
+
+
 
 
