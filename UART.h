@@ -17,6 +17,8 @@ public:
 	~UART();
 	void print(char *s);
 	void println(char *s);
+	void enable();
+	void disable();
 };
 
 #endif /* UART_H_ */
