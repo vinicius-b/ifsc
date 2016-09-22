@@ -14,8 +14,8 @@ int main(){
 	//true - entrada
 
 	gpio led(13,true);
-	UART Serial();
-	Debugger db(Serial);
+	UART Serial;
+	Debugger db(&Serial);
 
 	while(1){
 		led.set(1);
@@ -28,7 +28,3 @@ int main(){
 
 	return 0;
 }
-
-
-
-

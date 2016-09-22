@@ -15,8 +15,8 @@ public:
 	void put(char character);
 	char get();
 	~UART();
-	void print(char *s);
-	void println(char *s);
+	void print(const char *s);
+	void println(const char *s);
 	void enable();
 	void disable();
 };

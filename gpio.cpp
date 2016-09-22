@@ -43,4 +43,3 @@ int gpio::get(){
 gpio::~gpio(){
 
 }
-

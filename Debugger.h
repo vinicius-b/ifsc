@@ -15,7 +15,7 @@ private:
   UART * output;
   long long baudrate;
 public:
-  Debugger(UART& out, long long baud = 19200)
+  Debugger(UART * out, long long baud = 19200)
     : output(out), baudrate(baud)
   {
     on();
