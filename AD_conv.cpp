@@ -8,9 +8,7 @@
 #include "AD_conv.h"
 
 AD_conv::AD_conv() {
-	//ADCSRA = (1 << 5);
 	enable();
-
 }
 
 AD_conv::~AD_conv(){}
@@ -27,7 +25,6 @@ uint16_t AD_conv::read(){
 	ADCSRB |= (0 << ADTS2);
 
 	while (ADCSRA & (1<<ADSC));
-	//ADCSRA |= _BV(ADIE);
 	uint16_t val = ADC;
 	val = converter(val);
 	return val;

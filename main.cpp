@@ -29,10 +29,10 @@ int main(){
 		uint16_t val = ad_conv.read();
 		sprintf(buffer,"%d", val);
 		if(val >= 3){
-			led.set(1);
+			led.on();
 			db.debug(buffer);
 		}else{
-			led.set(0);
+			led.off();
 			db.debug(buffer);
 		}
 
