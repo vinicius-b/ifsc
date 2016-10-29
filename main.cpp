@@ -5,25 +5,37 @@
  *      Author: aluno
  */
 #include <util/delay.h>
+
+#include "AD_conv.h"
 #include "gpio.h"
 #include "UART.h"
 #include "Debugger.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 int main(){
-	//false - saida
-	//true - entrada
+	//false - entrada
+	//true - saida
+	//pot pin A0
+	//led pin 13
 
 	gpio led(13,true);
 	UART Serial;
 	Debugger db(&Serial);
-
+	AD_conv ad_conv;
+	char buffer [10];
+	const char* val_s;
 	while(1){
-		led.set(1);
-		_delay_ms(1000);
-		db.debug("On!");
-		led.set(0);
-		_delay_ms(1000);
-		db.debug("Off!");
+		uint16_t val = ad_conv.read();
+		sprintf(buffer,"%d", val);
+		if(val >= 3){
+			led.set(1);
+			db.debug(buffer);
+		}else{
+			led.set(0);
+			db.debug(buffer);
+		}
+
 	}
 
 	return 0;

@@ -17,6 +17,7 @@ UART::UART() {
 	UBRR0L = (unsigned char)ubrr;
 
 	UCSR0C |= (1 <<2)|(1<<1);
+
 	enable();
 }
 
@@ -30,7 +31,8 @@ void UART::put(char character){
 }
 
 char UART::get(){
-
+	while(!(UCSR0A & (1<<7)));
+	return RXC0;
 }
 
 void UART::enable(){

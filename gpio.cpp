@@ -10,36 +10,37 @@
 #include "gpio.h"
 
 gpio::gpio(int p, bool io): pin(p), in_out(io) {
-	if(in_out){
-		if (p >= 0 && p <= 7)
-			DDRD = (1 << p);
-		else if (p >=8 && p <= 13)
-			DDRB = (1 << (p - 8));
-		else if (p >= 14 && p <= 19)
-			DDRC = (1 << (p - 14));
-	}else{
-			if (p >= 0 && p <= 7)
-				DDRD &= ~p;
-			else if (p >=8 && p <= 13)
-				DDRB &= ~(p - 8);
-			else if (p >= 14 && p <= 19)
-				DDRC &=  ~(p - 14);
-		}
+	if(pin<=7){
+			DDRD |= (1<<pin);
+			port = &PORTD;
+		}else if(pin>=8 && pin<=13){
+			pin = pin-8;
+			DDRB |= (1<<pin);
+			port = &PORTB;
+		 }else{
+			pin = pin-14;
+			DDRC |= (1<<pin);
+			port = &PORTC;
+		  }
 }
 
 void gpio::set(int val){
-
-	if (pin >= 0 && pin <= 7)
-		PORTD = (val << pin);
-	else if (pin >=8 && pin <= 13)
-		PORTB = (val << (pin-8));
-	else if (pin >= 14 && pin <= 19)
-		PORTC = (val << (pin - 14));
+		if(val)
+			*port |= (1<<pin);
+		else
+			*port &= ~(1<<pin);
 }
+
 
 int gpio::get(){
-	return pin;
+	if(pin<=7){
+		 return PORTD;
+	    }else if(pin>=8 && pin<=13){
+	    	return PORTB;
+	    }else {
+	    	return PORTC;
+	     }
 }
-gpio::~gpio(){
 
-}
+
+gpio::~gpio(){}
