@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<meta charset = "utf-8" />
+<html>
+<style>
+form {
+    border: 3px solid #f1f1f1;
+	width: 50%;
+	
+}
+
+input[type=text], input[type=password] {
+    width: 50%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: left;
+    padding-top: 16px;
+}
+
+
+</style>
+<body>
+
+ <form action="login.php">
+    <div class="container">
+      <label><b>Usuário</b></label>
+      <input type="text" placeholder="Digite seu login de usuário" name="login" required>
+    <div class="container">
+      <label><b>Senha</b></label>
+      <input type="password" placeholder="Digite sua senha" name="senha" required>
+    <div class="container">
+      <button type="submit">Login</button>
+      <input type="checkbox" checked="checked"> Lembre-se de mim
+    </div>
+    <div class="container">
+      <span class="psw">Esqueceu sua <a href="#">senha?</a></span>
+    </div>
+</form>
