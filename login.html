@@ -8,7 +8,6 @@ form {
 	width: 50%;
 	
 }
-
 input[type=text], input[type=password] {
     width: 50%;
     padding: 14px 20px;
@@ -17,7 +16,6 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-
 button {
     background-color: #4CAF50;
     color: white;
@@ -27,20 +25,16 @@ button {
     cursor: pointer;
     width: 50%;
 }
-
 .container {
     padding: 16px;
 }
-
 span.psw {
     float: left;
     padding-top: 16px;
 }
-
-
 </style>
 <body>
-
+<center>
  <form action="login.php">
     <div class="container">
       <label><b>Usuário</b></label>
@@ -50,9 +44,12 @@ span.psw {
       <input type="password" placeholder="Digite sua senha" name="senha" required>
     <div class="container">
       <button type="submit">Login</button>
-      <input type="checkbox" checked="checked"> Lembre-se de mim
     </div>
-    <div class="container">
+	<div class="container">
+	 <input type="checkbox" checked="checked"> Lembre-se de mim
+    </div>
+	<div class="container">
       <span class="psw">Esqueceu sua <a href="#">senha?</a></span>
     </div>
+</center>
 </form>
