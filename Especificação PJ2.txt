@@ -1,0 +1,55 @@
+Mensagens - Protocolo para sensoriamento
+
+1. Definição do serviço:
+
+	Protocolo de comunicação entre broker e sensores, modelo publisher-subscriber, para efetuar o controle desses sensores.
+
+2. Mensagens:
+
+	- publish: menssagem de publicação para cada sensor(estado, temperatura,...);
+	- subscribe: mensagem de assinatura de tópico para sensor;
+	- notify: mensagem de ativação ou desativação de sensor;
+	- unsubscribe: desassina topico.
+
+Exemplo de como utilizar OBJECT IDENTIFIER:
+
+	1.5.4.15
+	| | | |
+        | | | Dispositivo
+	| | Tipo
+	| Sala
+        Campus
+
+Mensagem DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+Publish ::= SEQUENCE {
+	subject OBJECT IDENTIFIER,
+	value BOOLEAN
+}
+
+Subscribe ::= SEQUENCE {
+	id OBJECT IDENTIFIER,	
+	subject OBJECT IDENTIFIER
+}
+
+Unsubscribe ::= SEQUENCE {
+	id OBJECT IDENTIFIER,	
+	subject OBJECT IDENTIFIER
+}
+
+Notify ::= SEQUENCE {
+	subject OBJECT IDENTIFIER,
+	value BOOLEAN
+}
+
+Mensagem ::= SEQUENCE {
+  msg CHOICE {
+  	pub Publish,
+		sub Subscribe,
+		un Unsubscribe,
+		noty Notify 
+  }
+}
+
+END
